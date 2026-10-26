@@ -1,0 +1,116 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+  Brand: glass on gold legs, shot on warm grey studio paper.
+  Page ground matches the photo backdrop so product shots sit in the page, not on it.
+  Pomegranate is the only action colour; brass marks details (rating, rules, legs).
+  Light-only on purpose: this is a storefront built around those photos.
+*/
+:root {
+  --background: #edeae5;
+  --foreground: #26211e;
+  --card: #f6f4f0;
+  --card-foreground: #26211e;
+  --popover: #f6f4f0;
+  --popover-foreground: #26211e;
+  --primary: #6e1e2b;
+  --primary-foreground: #f8f1ec;
+  --secondary: #e2ddd6;
+  --secondary-foreground: #26211e;
+  --muted: #e2ddd6;
+  --muted-foreground: #645c55;
+  --accent: #e4dccf;
+  --accent-foreground: #26211e;
+  --destructive: #b3261e;
+  --border: #d5cec5;
+  --input: #cbc3b8;
+  --ring: #6e1e2b;
+  --brass: #84652f;
+  --brass-soft: #c2a26a;
+  --well: #d9d3cb;
+  --ink: #1d1916;
+  --ink-foreground: #efe9e1;
+  --success: #2f6b4f;
+  --radius: 0.5rem;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-brass: var(--brass);
+  --color-brass-soft: var(--brass-soft);
+  --color-well: var(--well);
+  --color-ink: var(--ink);
+  --color-ink-foreground: var(--ink-foreground);
+  --color-success: var(--success);
+
+  --font-sans: "Onest", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: "Cormorant Garamond", "Cormorant", Georgia, "Times New Roman", serif;
+
+  --radius-sm: calc(var(--radius) * 0.75);
+  --radius-md: calc(var(--radius) * 0.875);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.5);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-feature-settings: "tnum" 0;
+  }
+  h1, h2, h3 {
+    text-wrap: balance;
+  }
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-display);
+    letter-spacing: -0.01em;
+  }
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+  .wrap {
+    width: 100%;
+    max-width: 1200px;
+    margin-inline: auto;
+    padding-inline: max(16px, env(safe-area-inset-left, 0px));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
