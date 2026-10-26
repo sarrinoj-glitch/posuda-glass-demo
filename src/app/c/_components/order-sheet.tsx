@@ -11,7 +11,9 @@ export function orderMessage(lines: Line[], gift: Gift) {
   const rows = lines
     .map((l) => {
       const r = resolveLine(l.key)
-      return r ? `• ${r.title} × ${l.qty} — ${rub(r.unit * l.qty)}` : null
+      if (!r) return null
+      const detail = r.kind === "set" ? ` (${r.subtitle})` : ""
+      return `• ${r.title}${detail} × ${l.qty} — ${rub(r.unit * l.qty)}`
     })
     .filter(Boolean)
   const parts = ["Здравствуйте! Хочу заказать:", ...rows, `Итого: ${rub(linesTotal(lines))}`]

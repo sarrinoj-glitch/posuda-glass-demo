@@ -36,7 +36,7 @@ export function CatalogTabs() {
                     <span className="text-xs text-muted-foreground">{p.sizeLabel}</span>
                     <span className="mt-auto pt-1 text-lg font-semibold tabular">{rub(p.price)}</span>
                   </div>
-                  <OrderButtons id={p.id} name={p.name} />
+                  <OrderButtons id={p.id} name={p.name} className="flex-col lg:flex-row" />
                 </article>
               ))}
           </div>

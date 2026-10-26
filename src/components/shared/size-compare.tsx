@@ -22,7 +22,7 @@ export function SizeCompare({ product }: { product: Product }) {
   const itemW = width * CM
   const itemH = height * CM
   const drawH = Math.max(phoneH, itemH)
-  const vbW = pad + phoneW + gap + itemW + pad + 24
+  const vbW = pad + phoneW + gap + itemW + pad + 44
   const vbH = drawH + pad + 44
   const ground = pad + drawH
 
@@ -71,7 +71,7 @@ export function SizeCompare({ product }: { product: Product }) {
               y={ground - itemH / 2 + 4}
               className="fill-foreground text-[12px] font-medium"
             >
-              {fmt(height)}
+              {fmt(height)} см
             </text>
           </>
         )}

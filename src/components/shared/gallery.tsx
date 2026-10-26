@@ -9,7 +9,7 @@ export function Gallery({ id, count, name }: { id: string; count: number; name: 
   const shots = Array.from({ length: count }, (_, i) => i + 1)
 
   return (
-    <div className="flex flex-col gap-3 md:flex-row-reverse">
+    <div className="flex flex-col gap-3 self-start md:flex-row-reverse md:items-start">
       <div className="relative flex-1 overflow-hidden rounded-lg bg-well">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
@@ -35,7 +35,7 @@ export function Gallery({ id, count, name }: { id: string; count: number; name: 
             )}
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={asset(photo(id, n))} alt="" loading="lazy" width={120} height={160} className="aspect-[3/4] w-full object-cover" />
+            <img src={asset(photo(id, n))} alt="" width={120} height={160} className="aspect-[3/4] w-full object-cover" />
           </button>
         ))}
       </div>

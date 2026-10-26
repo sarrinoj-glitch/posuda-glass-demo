@@ -96,9 +96,11 @@
   .font-display {
     font-family: var(--font-display);
     letter-spacing: -0.01em;
+    /* Cormorant defaults to old-style figures: «30» reads like «зо» next to Cyrillic. */
+    font-variant-numeric: lining-nums;
   }
   .tabular {
-    font-variant-numeric: tabular-nums;
+    font-variant-numeric: tabular-nums lining-nums;
   }
   .wrap {
     width: 100%;

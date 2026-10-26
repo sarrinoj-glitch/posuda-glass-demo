@@ -150,11 +150,11 @@ export default function BoutiqueHome() {
             </p>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src={asset(photo("787375072", 4))}
-              alt="Блюдца в подарочной коробке"
+              src={asset(photo("778118975", "cover"))}
+              alt="Конфетница на литой ножке с конфетами"
               loading="lazy"
               width={720}
-              height={960}
+              height={720}
               className="aspect-[4/3] w-full rounded-lg bg-well object-cover"
             />
           </div>

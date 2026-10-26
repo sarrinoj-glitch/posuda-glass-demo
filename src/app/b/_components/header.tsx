@@ -69,14 +69,14 @@ export function StoreHeader() {
           <span className="hidden text-xs text-muted-foreground lg:inline">посуда для праздничного стола</span>
         </Link>
 
-        <nav className="ml-6 hidden items-center gap-5 text-sm md:flex" aria-label="Основное меню">
+        <nav className="ml-6 hidden items-center gap-5 text-sm whitespace-nowrap md:flex" aria-label="Основное меню">
           <Link href="/b/catalog/" className="hover:text-primary">Каталог</Link>
-          <Link href="/b/catalog/?cat=stands" className="hover:text-primary">Блюда на ножке</Link>
+          <Link href="/b/catalog/?cat=stands" className="hidden hover:text-primary lg:inline">Блюда на ножке</Link>
           <Link href="/b/catalog/?cat=roll" className="hover:text-primary">Рулетницы</Link>
           <Link href="/b/#delivery" className="hover:text-primary">Доставка</Link>
         </nav>
 
-        <form onSubmit={search} className="relative ml-auto hidden w-64 md:block" role="search">
+        <form onSubmit={search} className="relative ml-auto hidden w-52 md:block lg:w-64" role="search">
           <Search className="pointer-events-none absolute left-2.5 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" aria-hidden />
           <Input
             value={q}
