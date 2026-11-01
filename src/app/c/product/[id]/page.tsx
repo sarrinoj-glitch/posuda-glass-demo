@@ -95,8 +95,8 @@ export default async function BoutiqueProduct({ params }: { params: Promise<{ id
             {inSets.map((s) => {
               const { price, save } = setPrice(s)
               return (
-                <article key={s.id} className="flex gap-4 rounded-xl border bg-card p-4">
-                  <div className="grid w-32 shrink-0 grid-cols-2 gap-1">
+                <article key={s.id} className="flex flex-col gap-4 rounded-xl border bg-card p-4 sm:flex-row">
+                  <div className="grid w-full shrink-0 grid-cols-4 gap-1 sm:w-32 sm:grid-cols-2">
                     {s.items.slice(0, 4).map((it) => (
                       <ProductImage key={it.id} id={it.id} alt="" className="rounded" />
                     ))}

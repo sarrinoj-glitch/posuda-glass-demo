@@ -152,7 +152,8 @@ export function SetFinder() {
   }
 
   return (
-    <div className="grid gap-8 rounded-2xl border bg-card p-5 md:grid-cols-[0.9fr_1.1fr] md:p-8">
+    // Fixed minimum height so the page doesn't jump between questions of different length.
+    <div className="grid gap-8 rounded-2xl border bg-card p-5 md:min-h-[440px] md:grid-cols-[0.9fr_1.1fr] md:p-8">
       <div className="flex flex-col gap-3">
         <p className="text-sm text-muted-foreground tabular">
           Вопрос {step + 1} из {questions.length}
