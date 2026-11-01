@@ -3,14 +3,18 @@ import type { Product } from "@/lib/catalog"
 import { ProductImage } from "@/components/shared/product-image"
 import { Rating } from "@/components/shared/rating"
 import { rub } from "@/lib/utils"
+import { FavButton } from "@/components/store/favorites"
 import { AddToCart } from "./add-to-cart"
 
 export function ProductCard({ product, eager }: { product: Product; eager?: boolean }) {
   return (
     <article className="group flex flex-col gap-3">
-      <Link href={`/b/product/${product.id}/`} className="block overflow-hidden rounded-lg">
-        <ProductImage id={product.id} alt={product.name} eager={eager} className="transition-transform duration-300 group-hover:scale-[1.02]" />
-      </Link>
+      <div className="relative">
+        <Link href={`/b/product/${product.id}/`} className="block overflow-hidden rounded-lg">
+          <ProductImage id={product.id} alt={product.name} eager={eager} className="transition-transform duration-300 group-hover:scale-[1.02]" />
+        </Link>
+        <FavButton id={product.id} name={product.name} overlay className="absolute top-2 right-2" />
+      </div>
       <div className="flex flex-1 flex-col gap-1.5">
         <Rating product={product} />
         <Link href={`/b/product/${product.id}/`} className="text-sm leading-snug hover:underline">

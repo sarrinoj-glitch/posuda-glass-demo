@@ -9,6 +9,7 @@ import { asset, plural, rub } from "@/lib/utils"
 import { AddSetButton } from "./_components/order-buttons"
 import { CatalogTabs } from "./_components/catalog-tabs"
 import { GiftBlock } from "./_components/gift-block"
+import { SetFinder } from "./_components/set-finder"
 import { TableBuilder } from "./_components/table-builder"
 
 // Hero: three pieces standing on one baseline, like a laid table.
@@ -128,6 +129,14 @@ export default function BoutiqueHome() {
             })}
           </div>
         </div>
+      </section>
+
+      <section id="finder" className="wrap scroll-mt-20 pt-16" aria-labelledby="finder-h">
+        <div className="mb-8 flex flex-col gap-2">
+          <h2 id="finder-h" className="font-display text-4xl font-semibold md:text-5xl">Не знаете, какой набор выбрать?</h2>
+          <p className="max-w-xl text-muted-foreground">Ответьте на три вопроса — подскажем набор и объясним выбор.</p>
+        </div>
+        <SetFinder />
       </section>
 
       <section id="builder" className="wrap scroll-mt-20 py-16" aria-labelledby="builder-h">

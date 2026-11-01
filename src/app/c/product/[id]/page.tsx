@@ -9,6 +9,9 @@ import { Specs } from "@/components/shared/specs"
 import { getProduct, products } from "@/lib/catalog"
 import { setPrice, sets } from "@/lib/sets"
 import { rub } from "@/lib/utils"
+import { ProductReviews } from "@/components/shared/product-reviews"
+import { StickyBar } from "@/components/shared/sticky-bar"
+import { reviewsFor } from "@/lib/reviews"
 import { AddSetButton, OrderButtons } from "../../_components/order-buttons"
 
 export const dynamicParams = false
@@ -31,7 +34,7 @@ export default async function BoutiqueProduct({ params }: { params: Promise<{ id
   const inSets = sets.filter((s) => s.items.some((it) => it.id === product.id))
 
   return (
-    <div className="wrap py-8">
+    <div className="wrap pt-8 pb-28 md:pb-8">
       <nav aria-label="Навигация" className="mb-6 text-xs text-muted-foreground">
         <Link href="/c/" className="hover:text-foreground">Главная</Link>
         {" / "}
@@ -115,6 +118,14 @@ export default async function BoutiqueProduct({ params }: { params: Promise<{ id
           </div>
         </section>
       )}
+
+      <div className="mt-16">
+        <ProductReviews data={reviewsFor(product.id)} rating={product.rating} total={product.reviews} />
+      </div>
+
+      <StickyBar price={product.price} name={product.name}>
+        <OrderButtons id={product.id} name={product.name} />
+      </StickyBar>
     </div>
   )
 }

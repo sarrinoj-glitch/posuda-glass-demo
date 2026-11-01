@@ -7,8 +7,13 @@ import { SizeCompare } from "@/components/shared/size-compare"
 import { Specs } from "@/components/shared/specs"
 import { categoryName, getProduct, products } from "@/lib/catalog"
 import { rub } from "@/lib/utils"
+import { ProductReviews } from "@/components/shared/product-reviews"
+import { StickyBar } from "@/components/shared/sticky-bar"
+import { reviewsFor } from "@/lib/reviews"
+import { AddToCart } from "../../_components/add-to-cart"
 import { ProductCard } from "../../_components/product-card"
 import { BuyBox } from "./buy-box"
+import { RecentlyViewed } from "./recent"
 
 export const dynamicParams = false
 
@@ -33,7 +38,7 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
     .slice(0, 4)
 
   return (
-    <div className="wrap py-8">
+    <div className="wrap pt-8 pb-28 md:pb-8">
       <nav aria-label="Навигация" className="mb-6 text-xs text-muted-foreground">
         <Link href="/b/" className="hover:text-foreground">Главная</Link>
         {" / "}
@@ -54,7 +59,7 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
 
           <p className="text-3xl font-semibold tabular">{rub(product.price)}</p>
 
-          <BuyBox id={product.id} name={product.name} />
+          <BuyBox id={product.id} name={product.name} price={product.price} />
 
           <ul className="flex flex-col gap-3 rounded-lg border bg-card p-4 text-sm">
             <li className="flex gap-3">
@@ -80,6 +85,10 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
         </div>
       </div>
 
+      <div className="mt-16">
+        <ProductReviews data={reviewsFor(product.id)} rating={product.rating} total={product.reviews} />
+      </div>
+
       <section className="mt-16" aria-labelledby="rel-h">
         <h2 id="rel-h" className="mb-6 font-display text-3xl font-semibold">С этим смотрят</h2>
         <div className="grid grid-cols-2 gap-x-4 gap-y-8 md:grid-cols-4">
@@ -88,6 +97,12 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
           ))}
         </div>
       </section>
+
+      <RecentlyViewed id={product.id} />
+
+      <StickyBar price={product.price} name={product.name}>
+        <AddToCart id={product.id} name={product.name} />
+      </StickyBar>
     </div>
   )
 }

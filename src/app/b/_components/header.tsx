@@ -3,7 +3,8 @@
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import * as React from "react"
-import { Menu, Search, ShoppingBag } from "lucide-react"
+import { Heart, Menu, Search, ShoppingBag } from "lucide-react"
+import { useFavorites } from "@/components/store/favorites"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
@@ -13,6 +14,7 @@ import { CartSheet } from "./cart-sheet"
 
 export function StoreHeader() {
   const { count, ready } = useCart()
+  const favs = useFavorites()
   const router = useRouter()
   const [q, setQ] = React.useState("")
   const [cartOpen, setCartOpen] = React.useState(false)
@@ -87,9 +89,20 @@ export function StoreHeader() {
           />
         </form>
 
+        <Button asChild variant="ghost" size="icon" className="relative ml-auto md:ml-0" aria-label={`Избранное, товаров: ${favs.ids.length}`}>
+          <Link href="/b/favorites/">
+            <Heart />
+            {favs.ready && favs.ids.length > 0 && (
+              <span className="absolute -top-0.5 -right-0.5 rounded-full bg-primary px-1 text-[10px] leading-4 text-primary-foreground tabular">
+                {favs.ids.length}
+              </span>
+            )}
+          </Link>
+        </Button>
+
         <Sheet open={cartOpen} onOpenChange={setCartOpen}>
           <SheetTrigger asChild>
-            <Button variant="outline" className="ml-auto gap-2 bg-card md:ml-0" aria-label={`Корзина, товаров: ${count}`}>
+            <Button variant="outline" className="gap-2 bg-card" aria-label={`Корзина, товаров: ${count}`}>
               <ShoppingBag />
               <span className="hidden sm:inline">Корзина</span>
               {ready && count > 0 && (
